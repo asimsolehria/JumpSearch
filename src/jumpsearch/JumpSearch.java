@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package jumpsearch;
 
 /**
@@ -11,11 +7,23 @@ package jumpsearch;
  */
 public class JumpSearch {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public  int jumpSearch(int[] array, int element) {
+    int blockSize = (int) Math.floor(Math.sqrt(array.length));
+
+    int lastIndex = blockSize-1;
+    
+
+    while (lastIndex < array.length && element > array[lastIndex]) 
+        lastIndex += blockSize;
+    
+
+    for (int index = lastIndex - blockSize + 1;
+         index <= lastIndex && index < array.length; index++) {
+        if (element == array[index]) {
+            return index;
+        }
     }
+    return -1;
+}
     
 }
